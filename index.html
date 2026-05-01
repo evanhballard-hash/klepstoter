@@ -498,6 +498,209 @@
     50% { transform: scaleY(1.08); }
   }
 
+  /* ---- WORKS / DISCOGRAPHY ---- */
+  .works {
+    padding: 8rem 5rem;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .works-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .work-card {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+    background: var(--card);
+    transition: border-color 0.3s;
+  }
+  .work-card:hover { border-color: rgba(201,137,58,0.3); }
+
+  .work-art {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: var(--surface);
+    border: 1px solid rgba(201,137,58,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .work-art.placeholder::after {
+    content: '♪';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: rgba(201,137,58,0.15);
+    font-family: serif;
+  }
+
+  .work-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+  }
+
+  .work-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .work-sub {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-top: 0.25rem;
+  }
+
+  .work-note {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-top: 1rem;
+    max-width: 480px;
+  }
+
+  /* ---- PROCESS ---- */
+  .process {
+    padding: 8rem 5rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .process-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 4rem;
+  }
+  .process-step {
+    background: var(--surface);
+    padding: 3rem 2.5rem;
+    position: relative;
+  }
+  .process-step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    font-weight: 300;
+    color: rgba(201,137,58,0.08);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+  .process-step-title {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.03em;
+  }
+  .process-step-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+  .process-step::after {
+    content: '';
+    position: absolute;
+    top: 3rem; right: -1px;
+    width: 1px; height: 2rem;
+    background: var(--amber);
+    opacity: 0.4;
+  }
+  .process-step:last-child::after { display: none; }
+
+  /* ---- LISTEN ---- */
+  .listen {
+    padding: 8rem 5rem;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .listen-embed {
+    margin-top: 4rem;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    background: var(--card);
+  }
+  .listen-embed iframe {
+    display: block;
+    width: 100%;
+    border: none;
+  }
+
+  /* ---- TESTIMONIALS ---- */
+  .testimonials {
+    padding: 8rem 5rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+  }
+  .testimonials-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+  .testimonial-card {
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+    background: var(--card);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: border-color 0.3s;
+  }
+  .testimonial-card:hover { border-color: rgba(201,137,58,0.25); }
+  .testimonial-stars {
+    color: var(--amber);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+  }
+  .testimonial-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .testimonial-author {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+  .testimonial-source {
+    font-size: 0.68rem;
+    color: var(--subtle);
+    margin-top: 0.2rem;
+    letter-spacing: 0.1em;
+  }
+
   /* ---- RESPONSIVE ---- */
   @media (max-width: 900px) {
     nav { padding: 1.25rem 2rem; }
@@ -511,6 +714,14 @@
     .genres-inner { grid-template-columns: 1fr; gap: 3rem; }
     .cta { padding: 6rem 2rem; }
     footer { padding: 2rem; flex-direction: column; gap: 1rem; text-align: center; }
+    .works { padding: 5rem 2rem; }
+    .work-card { grid-template-columns: 1fr; }
+    .process { padding: 5rem 2rem; }
+    .process-steps { grid-template-columns: 1fr; }
+    .process-step::after { display: none; }
+    .listen { padding: 5rem 2rem; }
+    .testimonials { padding: 5rem 2rem; }
+    .testimonials-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -522,6 +733,8 @@
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="#works">Works</a></li>
+    <li><a href="#listen">Listen</a></li>
     <li><a href="#contact">Work With Me</a></li>
   </ul>
   <div class="nav-social">
@@ -727,35 +940,104 @@
     </div>
   </div>
 </section>
- 
+
 <!-- WORKS / DISCOGRAPHY -->
 <section class="works" id="works">
   <div class="section-header">
     <span class="section-tag">Discography</span>
     <h2 class="section-title">Selected Works</h2>
   </div>
-
   <div class="works-grid">
-
-    <!-- Album: The Shadows Made From Light -->
-    <div class="work-card album">
+    <div class="work-card">
       <div class="work-art placeholder"></div>
-
       <div class="work-meta">
-        <div class="work-title">
-          The Shadows Made From Light
-        </div>
-        <div class="work-sub">
-          Album · with Evan Ballard · 2025
-        </div>
-        <p class="work-note">
-          Warm‑light post‑Britpop introspection — melodic, patient, and expansive.
-        </p>
+        <div class="work-title">The Shadows Made From Light</div>
+        <div class="work-sub">Album · with Evan Ballard · 2025</div>
+        <p class="work-note">Warm-light post-Britpop introspection — melodic, patient, and expansive.</p>
       </div>
     </div>
-
   </div>
 </section>
+
+<!-- LISTEN -->
+<section class="listen" id="listen">
+  <div class="section-header">
+    <span class="section-tag">Listen</span>
+    <h2 class="section-title">Hear the Work</h2>
+  </div>
+  <div class="listen-embed">
+    <iframe
+      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/klepstoter&color=%23c9893a&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
+      height="450"
+      scrolling="no"
+      allow="autoplay">
+    </iframe>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="process">
+  <div class="process-inner">
+    <div class="section-header">
+      <span class="section-tag">The Process</span>
+      <h2 class="section-title">How It Works</h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-step-num">01</div>
+        <h3 class="process-step-title">Tell Me Your Vision</h3>
+        <p class="process-step-desc">Send me a message on Fiverr with your idea — a reference track, a mood, a genre, or just a few words. No need to have it all figured out.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">02</div>
+        <h3 class="process-step-title">I Build the Sound</h3>
+        <p class="process-step-desc">I compose, arrange, and produce your track from the ground up — real instruments, real craft. You'll receive a draft to review and refine together.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">03</div>
+        <h3 class="process-step-title">You Get the Files</h3>
+        <p class="process-step-desc">Once you're satisfied, I deliver broadcast-quality audio files ready for release, sync, or further production. Unlimited revisions until it's right.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <div class="section-header">
+      <span class="section-tag">Reviews</span>
+      <h2 class="section-title">What Clients Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"Incredible attention to detail. He took my rough idea and returned something I couldn't have imagined. Will absolutely work together again."</p>
+        <div>
+          <div class="testimonial-author">— Fiverr Client</div>
+          <div class="testimonial-source">Music Production · 5 Stars</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"Fast, communicative, and the guitar tone was exactly what I needed. Delivered ahead of schedule with no notes needed."</p>
+        <div>
+          <div class="testimonial-author">— Fiverr Client</div>
+          <div class="testimonial-source">Guitar Recording · 5 Stars</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"The transcription was flawless — every voicing captured perfectly. This is the best sheet music work I've ordered online."</p>
+        <div>
+          <div class="testimonial-author">— Fiverr Client</div>
+          <div class="testimonial-source">Sheet Music · 5 Stars</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="cta-bg"></div>
