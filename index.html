@@ -1,80 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Klepstoter — Works</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klepstoter – Works</title>
 
 <style>
-/* =============================
-   THEME
-============================= */
-:root {
-  --bg: #0b0b0b;
-  --fg: #f2f2f2;
-  --muted: rgba(255,255,255,.55);
-  --line: rgba(255,255,255,.2);
-  --glow-album: rgba(255,190,120,.55);
-  --glow-default: rgba(255,190,120,.25);
-}
-
-* { box-sizing: border-box; }
-
+/* =========================
+   BASE
+========================= */
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--fg);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: #0b0b0b;
+  color: #f2f2f2;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* =============================
+/* =========================
    CONTROLS
-============================= */
+========================= */
 .controls {
   max-width: 1100px;
-  margin: 2.5rem auto 1.25rem;
+  margin: 2rem auto 1.5rem;
   padding: 0 1rem;
-  display: grid;
-  gap: 0.75rem;
 }
 
-.search-wrap input {
+.controls input {
   width: 100%;
-  padding: .6rem .8rem;
+  padding: .6rem .75rem;
   background: transparent;
-  color: var(--fg);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  font-size: .7rem;
-  letter-spacing: .06em;
+  border: 1px solid rgba(255,255,255,.25);
+  color: inherit;
+  font-size: .75rem;
 }
-.search-wrap input::placeholder { color: var(--muted); }
 
 .filter-bar {
+  margin-top: .75rem;
   display: flex;
   gap: .5rem;
   flex-wrap: wrap;
 }
 
 .filter-btn {
-  padding: .4rem .8rem;
+  padding: .35rem .75rem;
   font-size: .65rem;
   letter-spacing: .14em;
   text-transform: uppercase;
   background: transparent;
-  color: var(--muted);
-  border: 1px solid var(--line);
+  color: rgba(255,255,255,.6);
+  border: 1px solid rgba(255,255,255,.25);
   border-radius: 999px;
   cursor: pointer;
 }
+
 .filter-btn.active {
   color: #fff;
-  border-color: rgba(255,255,255,.6);
+  border-color: rgba(255,255,255,.75);
 }
 
-/* =============================
+/* =========================
    GRID
-============================= */
+========================= */
 .works-grid {
   max-width: 1100px;
   margin: 0 auto 4rem;
@@ -84,9 +71,9 @@ body {
   gap: 1.5rem;
 }
 
-/* =============================
+/* =========================
    ERA DIVIDER
-============================= */
+========================= */
 .era-divider {
   grid-column: 1 / -1;
   margin: 3rem 0 1.5rem;
@@ -95,23 +82,11 @@ body {
   letter-spacing: .18em;
   text-transform: uppercase;
   color: rgba(255,255,255,.45);
-  position: relative;
 }
-.era-divider::before,
-.era-divider::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 30%;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(255,255,255,.25), transparent);
-}
-.era-divider::before { left: 0; }
-.era-divider::after  { right: 0; }
 
-/* =============================
+/* =========================
    ART CARD
-============================= */
+========================= */
 .art-card {
   position: relative;
   aspect-ratio: 1 / 1;
@@ -120,48 +95,41 @@ body {
   border-radius: 6px;
   overflow: hidden;
   cursor: pointer;
-  outline: none;
-}
-.art-card:focus-visible {
-  box-shadow: 0 0 0 2px rgba(255,255,255,.85);
 }
 
+.art-card:focus-visible {
+  outline: 2px solid rgba(255,255,255,.8);
+  outline-offset: 2px;
+}
+
+/* glow */
 .art-card::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, var(--glow-default), rgba(0,0,0,.85));
+  background: radial-gradient(
+    circle at center,
+    rgba(255,190,120,.25),
+    rgba(0,0,0,.85)
+  );
   opacity: 0;
   transition: opacity .35s ease;
 }
+
 .art-card[data-type="album"]::after {
-  background: radial-gradient(ellipse at center, var(--glow-album), rgba(0,0,0,.8));
+  background: radial-gradient(
+    circle at center,
+    rgba(255,190,120,.55),
+    rgba(0,0,0,.85)
+  );
 }
+
 .art-card:hover::after,
-.art-card.is-open::after { opacity: 1; }
-
-/* =============================
-   BADGE
-============================= */
-.collab-badge {
-  position: absolute;
-  top: .6rem;
-  left: .6rem;
-  padding: .25rem .5rem;
-  font-size: .6rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.8);
-  background: rgba(0,0,0,.45);
-  border: 1px solid rgba(255,255,255,.18);
-  border-radius: 999px;
-  backdrop-filter: blur(6px);
-  pointer-events: none;
+.art-card.touch-open::after {
+  opacity: 1;
 }
 
-/* =============================
-   OVERLAY
-============================= */
+/* overlay */
 .track-overlay {
   position: absolute;
   inset: 0;
@@ -171,78 +139,92 @@ body {
   justify-content: flex-end;
   opacity: 0;
   transition: opacity .35s ease;
+  background: linear-gradient(to top, rgba(0,0,0,.75), transparent 60%);
   font-size: .7rem;
-  background: linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,0) 60%);
 }
+
 .art-card:hover .track-overlay,
-.art-card.is-open .track-overlay { opacity: 1; }
+.art-card.touch-open .track-overlay {
+  opacity: 1;
+}
 
 .track-title {
   font-size: .75rem;
   letter-spacing: .1em;
   text-transform: uppercase;
-  margin-bottom: .4rem;
+  margin-bottom: .35rem;
 }
 
 .liner-quote {
   font-style: italic;
   font-size: .68rem;
-  line-height: 1.4;
-  color: rgba(255,255,255,.7);
-  margin: 0 0 .5rem;
+  opacity: .7;
+  margin: 0 0 .4rem;
 }
 
 .tracklist {
   padding-left: 1rem;
   margin: 0;
 }
+
 .tracklist li {
+  opacity: .75;
   margin-bottom: .15rem;
-  opacity: .8;
 }
 
-/* =============================
-   FILTERED STATE
-============================= */
-[hidden] { display: none !important; }
+/* badge */
+.collab-badge {
+  position: absolute;
+  top: .6rem;
+  left: .6rem;
+  padding: .25rem .5rem;
+  font-size: .6rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  background: rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 999px;
+}
+
+/* filtering */
+[hidden] {
+  display: none !important;
+}
 </style>
 </head>
 
 <body>
 
-<!-- =============================
+<!-- =========================
      CONTROLS
-============================= -->
+========================= -->
 <div class="controls">
-  <div class="search-wrap">
-    <input id="searchInput" type="search" placeholder="Search works…" aria-label="Search works">
-  </div>
+  <input id="workSearch" type="search" placeholder="Search works…">
 
-  <div class="filter-bar" role="group" aria-label="Filter works">
+  <div class="filter-bar">
     <button class="filter-btn active" data-filter="album">Albums</button>
     <button class="filter-btn active" data-filter="single">Singles</button>
     <button class="filter-btn active" data-filter="ep">EPs</button>
   </div>
 </div>
 
-<!-- =============================
+<!-- =========================
      GRID
-============================= -->
-<div class="works-grid" id="grid">
+========================= -->
+<div class="works-grid">
 
   <!-- SINGLE -->
   <div class="art-card"
        tabindex="0"
        data-type="single"
-       data-search="a sleeping bee 2013 single"
+       data-search="a sleeping bee 2013"
        style="background-image:url('https://i.scdn.co/image/ab67616d0000b2730502e7ec2d241c825bb112ef')">
     <div class="track-overlay">
       <div class="track-title">A Sleeping Bee · 2013</div>
     </div>
   </div>
 
-  <!-- ERA -->
-  <div class="era-divider" data-era="album-era">2025 — The Album Era</div>
+  <div class="era-divider">2025 — The Album Era</div>
 
   <!-- ALBUM -->
   <div class="art-card"
@@ -260,14 +242,21 @@ body {
       </div>
 
       <p class="liner-quote">
-        “A warm‑light reinvention of post‑Britpop introspection — intimate,
-        melodic, and quietly expansive.”
+        “Warm‑light post‑Britpop introspection, patient and melodic.”
       </p>
 
       <ul class="tracklist">
-        <li>Eagle Fly</li><li>Because She</li><li>Release</li><li>In My Mind</li>
-        <li>Cleft</li><li>Virare</li><li>Be A Part Of Me</li><li>Float</li>
-        <li>Where We Start</li><li>Lidocaine</li><li>Like Father, Like Son</li>
+        <li>Eagle Fly</li>
+        <li>Because She</li>
+        <li>Release</li>
+        <li>In My Mind</li>
+        <li>Cleft</li>
+        <li>Virare</li>
+        <li>Be A Part Of Me</li>
+        <li>Float</li>
+        <li>Where We Start</li>
+        <li>Lidocaine</li>
+        <li>Like Father, Like Son</li>
       </ul>
     </div>
   </div>
@@ -275,30 +264,25 @@ body {
 </div>
 
 <script>
-/* =============================
-   MULTI-FILTER + SEARCH
-============================= */
+/* =========================
+   FILTER + SEARCH
+========================= */
 const filterButtons = document.querySelectorAll('.filter-btn');
 const cards = document.querySelectorAll('.art-card');
-const eraDividers = document.querySelectorAll('.era-divider');
-const searchInput = document.getElementById('searchInput');
+const searchInput = document.getElementById('workSearch');
 
 function applyFilters() {
   const activeTypes = [...filterButtons]
     .filter(b => b.classList.contains('active'))
     .map(b => b.dataset.filter);
 
-  const q = searchInput.value.toLowerCase().trim();
+  const q = searchInput.value.toLowerCase();
 
   cards.forEach(card => {
     const typeOk = activeTypes.includes(card.dataset.type);
-    const searchOk = !q || card.dataset.search.includes(q);
-    card.hidden = !(typeOk && searchOk);
+    const textOk = card.dataset.search.includes(q);
+    card.hidden = !(typeOk && textOk);
   });
-
-  // hide era divider if no visible albums
-  const anyAlbumVisible = [...cards].some(c => !c.hidden && c.dataset.type === 'album');
-  eraDividers.forEach(d => d.hidden = !anyAlbumVisible);
 }
 
 filterButtons.forEach(btn => {
@@ -310,32 +294,22 @@ filterButtons.forEach(btn => {
 
 searchInput.addEventListener('input', applyFilters);
 
-/* =============================
-   TOUCH-FIRST & KEYBOARD
-============================= */
+/* =========================
+   KEYBOARD + TOUCH
+========================= */
 cards.forEach(card => {
-  // keyboard toggle
   card.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      card.classList.toggle('is-open');
+      card.classList.toggle('touch-open');
     }
   });
 
-  // touch toggle
-  let touched = false;
   card.addEventListener('touchstart', () => {
-    touched = true;
-    card.classList.toggle('is-open');
+    card.classList.toggle('touch-open');
   }, { passive: true });
-
-  // close when leaving focus
-  card.addEventListener('blur', () => {
-    if (!touched) card.classList.remove('is-open');
-  });
 });
 </script>
 
 </body>
 </html>
-``
