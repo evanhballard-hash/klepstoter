@@ -504,76 +504,42 @@
     max-width: 1300px;
     margin: 0 auto;
   }
-
   .works-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
+    display: grid;
+    gap: 3rem;
   }
-
   .work-card {
     display: grid;
     grid-template-columns: 220px 1fr;
     gap: 2.5rem;
-    align-items: start;
-    padding: 2.5rem;
-    border: 1px solid var(--border);
+    padding: 2rem;
     background: var(--card);
+    border: 1px solid var(--border);
     transition: border-color 0.3s;
   }
   .work-card:hover { border-color: rgba(201,137,58,0.3); }
-
   .work-art {
-    width: 100%;
     aspect-ratio: 1 / 1;
-    background: var(--surface);
-    border: 1px solid rgba(201,137,58,0.15);
-    position: relative;
-    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--border);
   }
-
-  .work-art.placeholder::after {
-    content: '♪';
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    color: rgba(201,137,58,0.15);
-    font-family: serif;
-  }
-
-  .work-meta {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.5rem 0;
-  }
-
   .work-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    font-weight: 300;
-    color: var(--white);
-    line-height: 1.2;
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
   }
-
   .work-sub {
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--amber);
-    margin-top: 0.25rem;
-  }
-
-  .work-note {
-    font-size: 0.92rem;
     color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .work-note {
+    color: var(--muted);
+    font-size: 0.9rem;
     line-height: 1.75;
-    margin-top: 1rem;
-    max-width: 480px;
   }
 
   /* ---- PROCESS ---- */
@@ -948,14 +914,70 @@
     <h2 class="section-title">Selected Works</h2>
   </div>
   <div class="works-grid">
+
     <div class="work-card">
-      <div class="work-art placeholder"></div>
+      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d0000b2739S6JSe4vp_aLy2J1bDVa97KdoE35JV_wS55S49ylcdJ5hAyEzmIlSA_KuG-11Qur0WFqraiW')"></div>
       <div class="work-meta">
         <div class="work-title">The Shadows Made From Light</div>
         <div class="work-sub">Album · with Evan Ballard · 2025</div>
         <p class="work-note">Warm-light post-Britpop introspection — melodic, patient, and expansive.</p>
       </div>
     </div>
+
+    <div class="work-card">
+      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d0000b2734742af6d5c9eae5f7f63ee5e')"></div>
+      <div class="work-meta">
+        <div class="work-title">Klepstoter</div>
+        <div class="work-sub">EP · 2018</div>
+        <p class="work-note">Early instrumental explorations — guitar-led themes and textural composition.</p>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d0000b27306f6f7473870f208b4eca70c')"></div>
+      <div class="work-meta">
+        <div class="work-title">David's Last Words</div>
+        <div class="work-sub">Single · 2019</div>
+        <p class="work-note">A concise, emotive single centered on harmony, restraint, and atmosphere.</p>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d0000b27306f6f7473870f208b4eca70c')"></div>
+      <div class="work-meta">
+        <div class="work-title">Sans Titre</div>
+        <div class="work-sub">Single · 2021</div>
+        <p class="work-note">Minimalist instrumental writing with a cinematic undertone.</p>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d0000b27306f6f7473870f208b4eca70c')"></div>
+      <div class="work-meta">
+        <div class="work-title">Soft Skin</div>
+        <div class="work-sub">Single · 2021</div>
+        <p class="work-note">A restrained, melodic piece balancing warmth and subtle tension.</p>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d0000b27306f6f7473870f208b4eca70c')"></div>
+      <div class="work-meta">
+        <div class="work-title">Whatever Is Begun in Anger Ends in Shame</div>
+        <div class="work-sub">Single · 2021</div>
+        <p class="work-note">A meditative statement piece — slow-burn structure with harmonic weight.</p>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d0000b2730502e7ec2d241c825bb112ef')"></div>
+      <div class="work-meta">
+        <div class="work-title">A Sleeping Bee</div>
+        <div class="work-sub">Single · 2013</div>
+        <p class="work-note">Early debut recording — intimate, acoustic-leaning, and understated.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
