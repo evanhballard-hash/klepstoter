@@ -74,6 +74,33 @@
   .nav-social a { color: var(--muted); transition: color 0.25s; display: flex; }
   .nav-social a:hover { color: var(--amber-light); }
 
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-left: 1rem;
+  }
+  .lang-toggle button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.4rem 0.75rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .lang-toggle button.active {
+    background: var(--amber);
+    color: var(--black);
+  }
+  .lang-toggle button:not(.active):hover { color: var(--white); }
+
   /* ---- HERO ---- */
   .hero {
     min-height: 100vh;
@@ -697,11 +724,11 @@
 <nav id="nav">
   <a href="#" class="nav-logo">Klepstoter</a>
   <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#works">Works</a></li>
-    <li><a href="#listen">Listen</a></li>
-    <li><a href="#contact">Work With Me</a></li>
+    <li><a href="#services" data-en="Services" data-it="Servizi">Services</a></li>
+    <li><a href="#about" data-en="About" data-it="Chi Sono">About</a></li>
+    <li><a href="#works" data-en="Works" data-it="Opere">Works</a></li>
+    <li><a href="#listen" data-en="Listen" data-it="Ascolta">Listen</a></li>
+    <li><a href="#contact" data-en="Work With Me" data-it="Lavora Con Me">Work With Me</a></li>
   </ul>
   <div class="nav-social">
     <a href="https://open.spotify.com/artist/0jbHQdhDqOvgZjx1aH33g1" target="_blank" rel="noopener" title="Spotify">
@@ -710,21 +737,28 @@
     <a href="https://soundcloud.com/klepstoter" target="_blank" rel="noopener" title="SoundCloud">
       <svg width="20" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M1.175 12.225c-.057 0-.114.007-.171.014-.065-3.61 2.886-6.58 6.496-6.58 1.385 0 2.67.435 3.716 1.17.286.2.342.58.142.866-.2.286-.58.342-.866.142-.85-.594-1.868-.937-2.992-.937-2.895 0-5.25 2.33-5.25 5.208 0 .095.005.19.014.28-.019.003-.038.004-.057.004l-.032-.167zm1.684 1.747c-.27-.22-.327-.62-.108-.89.22-.27.62-.327.89-.108 1.09.886 2.48 1.416 4.001 1.416 1.2 0 2.313-.34 3.254-.927.298-.184.69-.092.874.206.184.298.092.69-.206.874-1.126.695-2.446 1.097-3.922 1.097-1.794 0-3.434-.634-4.783-1.668zm3.57-5.254c-.038-.328.197-.622.525-.66.328-.038.622.197.66.525.198 1.69 1.635 2.997 3.378 2.997.33 0 .65-.047.952-.135.33-.096.675.095.77.425.096.33-.095.675-.425.77-.387.113-.795.19-1.217.19-2.506 0-4.566-1.88-4.843-4.284l.2.172zm7.916 4.284c0-.345.28-.625.625-.625s.625.28.625.625-.28.625-.625.625-.625-.28-.625-.625zm1.25-2.5c0-.345.28-.625.625-.625s.625.28.625.625v1.25c0 .345-.28.625-.625.625s-.625-.28-.625-.625v-1.25zm0-2.5c0-.345.28-.625.625-.625s.625.28.625.625v1.25c0 .345-.28.625-.625.625s-.625-.28-.625-.625V8zm1.25-1.25c0-.345.28-.625.625-.625s.625.28.625.625v6.25c0 .345-.28.625-.625.625s-.625-.28-.625-.625V6.75zm1.25 1.25c0-.345.28-.625.625-.625s.625.28.625.625v5c0 .345-.28.625-.625.625s-.625-.28-.625-.625V8zm1.25-.625c0-.345.28-.625.625-.625s.625.28.625.625v5.625c0 .345-.28.625-.625.625s-.625-.28-.625-.625V7.375z"/></svg>
     </a>
+    <a href="https://instagram.com/klepstoter" target="_blank" rel="noopener" title="Instagram">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <div class="lang-toggle">
+      <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+      <button id="btn-it" onclick="setLang('it')">IT</button>
+    </div>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-eyebrow">Guitarist &amp; Music Producer</p>
+    <p class="hero-eyebrow" data-en="Guitarist &amp; Music Producer" data-it="Chitarrista &amp; Produttore Musicale">Guitarist &amp; Music Producer</p>
     <h1 class="hero-name">
       <em>Klepstoter</em>
     </h1>
     <p class="hero-subtitle">Italy &nbsp;·&nbsp; Rock &nbsp;·&nbsp; Jazz &nbsp;·&nbsp; Fusion &nbsp;·&nbsp; Pop</p>
-    <p class="hero-desc">
+    <p class="hero-desc" data-en="Over a decade of crafting fully produced, radio-ready tracks for artists worldwide. Bring your vision — I'll build the sound around it." data-it="Oltre un decennio di produzioni complete e pronte per la radio, per artisti di tutto il mondo. Porta la tua visione — ci costruirò il suono intorno.">
       Over a decade of crafting fully produced, radio-ready tracks for artists worldwide. Bring your vision — I'll build the sound around it.
     </p>
-    <a href="https://www.fiverr.com/klepstoter/be-your-music-producer-with-unlimited-instruments" target="_blank" rel="noopener" class="btn-primary">
+    <a href="https://www.fiverr.com/klepstoter/be-your-music-producer-with-unlimited-instruments" target="_blank" rel="noopener" class="btn-primary" data-en="Hire Me on Fiverr" data-it="Assumimi su Fiverr">
       Hire Me on Fiverr
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -840,25 +874,25 @@
 <!-- SERVICES -->
 <section class="services" id="services">
   <div class="section-header">
-    <span class="section-tag">What I Do</span>
-    <h2 class="section-title">Services</h2>
+    <span class="section-tag" data-en="What I Do" data-it="Cosa Faccio">What I Do</span>
+    <h2 class="section-title" data-en="Services" data-it="Servizi">Services</h2>
   </div>
 
   <div class="services-grid">
     <div class="service-card">
       <div class="service-num">01</div>
-      <h3 class="service-name">Full Music Production</h3>
-      <p class="service-desc">From bare idea to polished, release-ready track. I handle arrangement, instrumentation, and production — using a full arsenal of real and virtual instruments to build the sound your song deserves.</p>
+      <h3 class="service-name" data-en="Full Music Production" data-it="Produzione Musicale Completa">Full Music Production</h3>
+      <p class="service-desc" data-en="From bare idea to polished, release-ready track. I handle arrangement, instrumentation, and production — using a full arsenal of real and virtual instruments to build the sound your song deserves." data-it="Dall'idea grezza alla traccia rifinita e pronta per la pubblicazione. Mi occupo di arrangiamento, strumentazione e produzione — usando un arsenale completo di strumenti reali e virtuali per costruire il suono che la tua canzone merita.">From bare idea to polished, release-ready track. I handle arrangement, instrumentation, and production — using a full arsenal of real and virtual instruments to build the sound your song deserves.</p>
     </div>
     <div class="service-card">
       <div class="service-num">02</div>
-      <h3 class="service-name">Guitar Recording & Session Work</h3>
-      <p class="service-desc">Need real guitar on your track? I record professional electric and acoustic guitar parts — clean, crunch, or heavy — across Rock, Jazz, Fusion, Pop, and beyond. Fast turnaround, studio quality.</p>
+      <h3 class="service-name" data-en="Guitar Recording &amp; Session Work" data-it="Registrazione Chitarra &amp; Session">Guitar Recording &amp; Session Work</h3>
+      <p class="service-desc" data-en="Need real guitar on your track? I record professional electric and acoustic guitar parts — clean, crunch, or heavy — across Rock, Jazz, Fusion, Pop, and beyond. Fast turnaround, studio quality." data-it="Hai bisogno di chitarra vera sulla tua traccia? Registro parti di chitarra elettrica e acustica professionali — clean, crunch o heavy — in Rock, Jazz, Fusion, Pop e oltre. Consegna rapida, qualità da studio.">Need real guitar on your track? I record professional electric and acoustic guitar parts — clean, crunch, or heavy — across Rock, Jazz, Fusion, Pop, and beyond. Fast turnaround, studio quality.</p>
     </div>
     <div class="service-card">
       <div class="service-num">03</div>
-      <h3 class="service-name">Sheet Music & Transcription</h3>
-      <p class="service-desc">Accurate transcriptions of any song for any ensemble — from jazz quartets to full rock band notation. Delivered as sheet music, MIDI file, and PDF rendition within days.</p>
+      <h3 class="service-name" data-en="Sheet Music &amp; Transcription" data-it="Spartiti &amp; Trascrizioni">Sheet Music &amp; Transcription</h3>
+      <p class="service-desc" data-en="Accurate transcriptions of any song for any ensemble — from jazz quartets to full rock band notation. Delivered as sheet music, MIDI file, and PDF rendition within days." data-it="Trascrizioni accurate di qualsiasi brano per qualsiasi ensemble — dai quartetti jazz alle partiture rock complete. Consegnate come spartiti, file MIDI e PDF in pochi giorni.">Accurate transcriptions of any song for any ensemble — from jazz quartets to full rock band notation. Delivered as sheet music, MIDI file, and PDF rendition within days.</p>
     </div>
   </div>
 </section>
@@ -867,9 +901,9 @@
 <section class="genres" id="about">
   <div class="genres-inner">
     <div class="genres-left">
-      <span class="section-tag">About</span>
-      <h2 class="section-title">Music is a craft,<br>not a commodity.</h2>
-      <p class="genres-body">
+      <span class="section-tag" data-en="About" data-it="Chi Sono">About</span>
+      <h2 class="section-title" data-en="Music is a craft,&lt;br&gt;not a commodity." data-it="La musica è un'arte,&lt;br&gt;non una merce.">Music is a craft,<br>not a commodity.</h2>
+      <p class="genres-body" data-en="I'm Klepstoter — a guitarist and producer based in Italy with over a decade of professional experience. I've worked across Rock, Jazz, Fusion, and Pop, crafting original compositions and full productions for solo artists, bands, and sync libraries.&lt;br&gt;&lt;br&gt;Whether you need a full beat-to-master production, a session guitarist to complete your record, or a precise transcription of a complex arrangement — I bring the same level of care and musicianship to every project." data-it="Sono Klepstoter — chitarrista e produttore italiano con oltre un decennio di esperienza professionale. Ho lavorato in ambiti Rock, Jazz, Fusion e Pop, creando composizioni originali e produzioni complete per artisti solisti, band e librerie di sincronizzazione.&lt;br&gt;&lt;br&gt;Che tu abbia bisogno di una produzione completa dal beat al master, di un session guitarist per completare il tuo disco, o di una trascrizione precisa di un arrangiamento complesso — porto lo stesso livello di cura e musicalità in ogni progetto.">
         I'm Klepstoter — a guitarist and producer based in Italy with over a decade of professional experience. I've worked across Rock, Jazz, Fusion, and Pop, crafting original compositions and full productions for solo artists, bands, and sync libraries.
         <br><br>
         Whether you need a full beat-to-master production, a session guitarist to complete your record, or a precise transcription of a complex arrangement — I bring the same level of care and musicianship to every project.
@@ -889,19 +923,19 @@
     <div class="genres-right">
       <div class="stat-box">
         <span class="stat-num">10+</span>
-        <span class="stat-label">Years of Experience</span>
+        <span class="stat-label" data-en="Years of Experience" data-it="Anni di Esperienza">Years of Experience</span>
       </div>
       <div class="stat-box">
         <span class="stat-num">∞</span>
-        <span class="stat-label">Instruments Available</span>
+        <span class="stat-label" data-en="Instruments Available" data-it="Strumenti Disponibili">Instruments Available</span>
       </div>
       <div class="stat-box">
         <span class="stat-num">4</span>
-        <span class="stat-label">Core Genres Mastered</span>
+        <span class="stat-label" data-en="Core Genres Mastered" data-it="Generi Principali Padroneggiati">Core Genres Mastered</span>
       </div>
       <div class="stat-box">
         <span class="stat-num">100%</span>
-        <span class="stat-label">Satisfaction Guarantee</span>
+        <span class="stat-label" data-en="Satisfaction Guarantee" data-it="Soddisfazione Garantita">Satisfaction Guarantee</span>
       </div>
     </div>
   </div>
@@ -910,22 +944,22 @@
 <!-- WORKS / DISCOGRAPHY -->
 <section class="works" id="works">
   <div class="section-header">
-    <span class="section-tag">Discography</span>
-    <h2 class="section-title">Selected Works</h2>
+    <span class="section-tag" data-en="Discography" data-it="Discografia">Discography</span>
+    <h2 class="section-title" data-en="Selected Works" data-it="Opere Selezionate">Selected Works</h2>
   </div>
   <div class="works-grid">
 
     <div class="work-card">
-      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d0000b2739S6JSe4vp_aLy2J1bDVa97KdoE35JV_wS55S49ylcdJ5hAyEzmIlSA_KuG-11Qur0WFqraiW')"></div>
+      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d00001e023807bf8963cc2e0bd5abb15e')"></div>
       <div class="work-meta">
         <div class="work-title">The Shadows Made From Light</div>
-        <div class="work-sub">Album · with Evan Ballard · 2025</div>
+        <div class="work-sub" data-en="Album · with Evan Ballard · 2025" data-it="Album · con Evan Ballard · 2025">Album · with Evan Ballard · 2025</div>
         <p class="work-note">Warm-light post-Britpop introspection — melodic, patient, and expansive.</p>
       </div>
     </div>
 
     <div class="work-card">
-      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d0000b2734742af6d5c9eae5f7f63ee5e')"></div>
+      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d00001e02205e58b5c452429d80a4ea9f')"></div>
       <div class="work-meta">
         <div class="work-title">Klepstoter</div>
         <div class="work-sub">EP · 2018</div>
@@ -934,7 +968,7 @@
     </div>
 
     <div class="work-card">
-      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d0000b27306f6f7473870f208b4eca70c')"></div>
+      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d00001e02c781da9bbfac1a96ee2c6a1c')"></div>
       <div class="work-meta">
         <div class="work-title">David's Last Words</div>
         <div class="work-sub">Single · 2019</div>
@@ -943,7 +977,7 @@
     </div>
 
     <div class="work-card">
-      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d0000b27306f6f7473870f208b4eca70c')"></div>
+      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d00001e023395f787559d1380e4f91bfa')"></div>
       <div class="work-meta">
         <div class="work-title">Sans Titre</div>
         <div class="work-sub">Single · 2021</div>
@@ -952,7 +986,7 @@
     </div>
 
     <div class="work-card">
-      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d0000b27306f6f7473870f208b4eca70c')"></div>
+      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d00001e02a3ac8f88c53b39fa159eb50a')"></div>
       <div class="work-meta">
         <div class="work-title">Soft Skin</div>
         <div class="work-sub">Single · 2021</div>
@@ -961,7 +995,7 @@
     </div>
 
     <div class="work-card">
-      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d0000b27306f6f7473870f208b4eca70c')"></div>
+      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d00001e0206f6f7473870f208b4eca70c')"></div>
       <div class="work-meta">
         <div class="work-title">Whatever Is Begun in Anger Ends in Shame</div>
         <div class="work-sub">Single · 2021</div>
@@ -970,7 +1004,7 @@
     </div>
 
     <div class="work-card">
-      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d0000b2730502e7ec2d241c825bb112ef')"></div>
+      <div class="work-art" style="background-image:url('https://i.scdn.co/image/ab67616d00001e02232edc78fb2b2aad4e8c0f34')"></div>
       <div class="work-meta">
         <div class="work-title">A Sleeping Bee</div>
         <div class="work-sub">Single · 2013</div>
@@ -984,8 +1018,8 @@
 <!-- LISTEN -->
 <section class="listen" id="listen">
   <div class="section-header">
-    <span class="section-tag">Listen</span>
-    <h2 class="section-title">Hear the Work</h2>
+    <span class="section-tag" data-en="Listen" data-it="Ascolta">Listen</span>
+    <h2 class="section-title" data-en="Hear the Work" data-it="Ascolta il Lavoro">Hear the Work</h2>
   </div>
   <div class="listen-embed">
     <iframe
@@ -1001,24 +1035,24 @@
 <section class="process">
   <div class="process-inner">
     <div class="section-header">
-      <span class="section-tag">The Process</span>
-      <h2 class="section-title">How It Works</h2>
+      <span class="section-tag" data-en="The Process" data-it="Il Processo">The Process</span>
+      <h2 class="section-title" data-en="How It Works" data-it="Come Funziona">How It Works</h2>
     </div>
     <div class="process-steps">
       <div class="process-step">
         <div class="process-step-num">01</div>
-        <h3 class="process-step-title">Tell Me Your Vision</h3>
-        <p class="process-step-desc">Send me a message on Fiverr with your idea — a reference track, a mood, a genre, or just a few words. No need to have it all figured out.</p>
+        <h3 class="process-step-title" data-en="Tell Me Your Vision" data-it="Dimmi la Tua Visione">Tell Me Your Vision</h3>
+        <p class="process-step-desc" data-en="Send me a message on Fiverr with your idea — a reference track, a mood, a genre, or just a few words. No need to have it all figured out." data-it="Mandami un messaggio su Fiverr con la tua idea — una traccia di riferimento, un'atmosfera, un genere, o solo qualche parola. Non è necessario avere tutto chiaro.">Send me a message on Fiverr with your idea — a reference track, a mood, a genre, or just a few words. No need to have it all figured out.</p>
       </div>
       <div class="process-step">
         <div class="process-step-num">02</div>
-        <h3 class="process-step-title">I Build the Sound</h3>
-        <p class="process-step-desc">I compose, arrange, and produce your track from the ground up — real instruments, real craft. You'll receive a draft to review and refine together.</p>
+        <h3 class="process-step-title" data-en="I Build the Sound" data-it="Costruisco il Suono">I Build the Sound</h3>
+        <p class="process-step-desc" data-en="I compose, arrange, and produce your track from the ground up — real instruments, real craft. You'll receive a draft to review and refine together." data-it="Compongo, arrangio e produco la tua traccia da zero — strumenti reali, artigianato reale. Riceverai una bozza da rivedere e affinare insieme.">I compose, arrange, and produce your track from the ground up — real instruments, real craft. You'll receive a draft to review and refine together.</p>
       </div>
       <div class="process-step">
         <div class="process-step-num">03</div>
-        <h3 class="process-step-title">You Get the Files</h3>
-        <p class="process-step-desc">Once you're satisfied, I deliver broadcast-quality audio files ready for release, sync, or further production. Unlimited revisions until it's right.</p>
+        <h3 class="process-step-title" data-en="You Get the Files" data-it="Ricevi i File">You Get the Files</h3>
+        <p class="process-step-desc" data-en="Once you're satisfied, I deliver broadcast-quality audio files ready for release, sync, or further production. Unlimited revisions until it's right." data-it="Quando sei soddisfatto, consegno file audio di qualità broadcast pronti per la pubblicazione, la sincronizzazione o ulteriori produzioni. Revisioni illimitate finché non è perfetto.">Once you're satisfied, I deliver broadcast-quality audio files ready for release, sync, or further production. Unlimited revisions until it's right.</p>
       </div>
     </div>
   </div>
@@ -1028,32 +1062,32 @@
 <section class="testimonials">
   <div class="testimonials-inner">
     <div class="section-header">
-      <span class="section-tag">Reviews</span>
-      <h2 class="section-title">What Clients Say</h2>
+      <span class="section-tag" data-en="Reviews" data-it="Recensioni">Reviews</span>
+      <h2 class="section-title" data-en="What Clients Say" data-it="Cosa Dicono i Clienti">What Clients Say</h2>
     </div>
     <div class="testimonials-grid">
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-quote">"Incredible attention to detail. He took my rough idea and returned something I couldn't have imagined. Will absolutely work together again."</p>
+        <p class="testimonial-quote" data-en="&ldquo;Incredible attention to detail. He took my rough idea and returned something I couldn't have imagined. Will absolutely work together again.&rdquo;" data-it="&ldquo;Incredibile attenzione ai dettagli. Ha preso la mia idea grezza e ha restituito qualcosa che non avrei potuto immaginare. Lavorerò sicuramente di nuovo con lui.&rdquo;">"Incredible attention to detail. He took my rough idea and returned something I couldn't have imagined. Will absolutely work together again."</p>
         <div>
-          <div class="testimonial-author">— Fiverr Client</div>
-          <div class="testimonial-source">Music Production · 5 Stars</div>
+          <div class="testimonial-author" data-en="— Fiverr Client" data-it="— Cliente Fiverr">— Fiverr Client</div>
+          <div class="testimonial-source" data-en="Music Production · 5 Stars" data-it="Produzione Musicale · 5 Stelle">Music Production · 5 Stars</div>
         </div>
       </div>
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-quote">"Fast, communicative, and the guitar tone was exactly what I needed. Delivered ahead of schedule with no notes needed."</p>
+        <p class="testimonial-quote" data-en="&ldquo;Fast, communicative, and the guitar tone was exactly what I needed. Delivered ahead of schedule with no notes needed.&rdquo;" data-it="&ldquo;Veloce, comunicativo, e il tono di chitarra era esattamente quello di cui avevo bisogno. Consegnato in anticipo sui tempi, senza bisogno di correzioni.&rdquo;">"Fast, communicative, and the guitar tone was exactly what I needed. Delivered ahead of schedule with no notes needed."</p>
         <div>
-          <div class="testimonial-author">— Fiverr Client</div>
-          <div class="testimonial-source">Guitar Recording · 5 Stars</div>
+          <div class="testimonial-author" data-en="— Fiverr Client" data-it="— Cliente Fiverr">— Fiverr Client</div>
+          <div class="testimonial-source" data-en="Guitar Recording · 5 Stars" data-it="Registrazione Chitarra · 5 Stelle">Guitar Recording · 5 Stars</div>
         </div>
       </div>
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-quote">"The transcription was flawless — every voicing captured perfectly. This is the best sheet music work I've ordered online."</p>
+        <p class="testimonial-quote" data-en="&ldquo;The transcription was flawless — every voicing captured perfectly. This is the best sheet music work I've ordered online.&rdquo;" data-it="&ldquo;La trascrizione era impeccabile — ogni voicing catturato perfettamente. È il miglior lavoro di spartiti che abbia mai ordinato online.&rdquo;">"The transcription was flawless — every voicing captured perfectly. This is the best sheet music work I've ordered online."</p>
         <div>
-          <div class="testimonial-author">— Fiverr Client</div>
-          <div class="testimonial-source">Sheet Music · 5 Stars</div>
+          <div class="testimonial-author" data-en="— Fiverr Client" data-it="— Cliente Fiverr">— Fiverr Client</div>
+          <div class="testimonial-source" data-en="Sheet Music · 5 Stars" data-it="Spartiti · 5 Stelle">Sheet Music · 5 Stars</div>
         </div>
       </div>
     </div>
@@ -1064,21 +1098,17 @@
 <section class="cta" id="contact">
   <div class="cta-bg"></div>
   <div class="cta-inner">
-    <p class="cta-tag">Ready to Start?</p>
-    <h2 class="cta-title">Let's make something <em>worth hearing.</em></h2>
-    <p class="cta-sub">Book a session, request a quote, or just send a message. All projects start with a conversation.</p>
+    <p class="cta-tag" data-en="Ready to Start?" data-it="Pronto a Iniziare?">Ready to Start?</p>
+    <h2 class="cta-title" data-en="Let's make something <em>worth hearing.</em>" data-it="Facciamo qualcosa <em>che vale la pena ascoltare.</em>">Let's make something <em>worth hearing.</em></h2>
+    <p class="cta-sub" data-en="Book a session, request a quote, or just send a message. All projects start with a conversation." data-it="Prenota una sessione, richiedi un preventivo, o manda un messaggio. Tutti i progetti iniziano con una conversazione.">Book a session, request a quote, or just send a message. All projects start with a conversation.</p>
     <div>
-      <a href="https://www.fiverr.com/klepstoter/be-your-music-producer-with-unlimited-instruments" target="_blank" rel="noopener" class="btn-outline">
+      <a href="https://www.fiverr.com/klepstoter/be-your-music-producer-with-unlimited-instruments" target="_blank" rel="noopener" class="btn-outline" data-en="View Fiverr Profile" data-it="Vedi Profilo Fiverr">
         View Fiverr Profile
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <a href="https://www.fiverr.com/klepstoter/quickly-transcribe-and-create-the-sheet-music-of-any-song" target="_blank" rel="noopener" class="btn-outline">
+      <a href="https://www.fiverr.com/klepstoter/quickly-transcribe-and-create-the-sheet-music-of-any-song" target="_blank" rel="noopener" class="btn-outline" data-en="Transcription Service" data-it="Servizio Trascrizioni">
         Transcription Service
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
   </div>
@@ -1094,15 +1124,40 @@
     <a href="https://soundcloud.com/klepstoter" target="_blank" rel="noopener" style="color:var(--muted);transition:color 0.25s;display:flex;" onmouseover="this.style.color='var(--amber-light)'" onmouseout="this.style.color='var(--muted)'" title="SoundCloud">
       <svg width="18" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M1.175 12.225c-.057 0-.114.007-.171.014-.065-3.61 2.886-6.58 6.496-6.58 1.385 0 2.67.435 3.716 1.17.286.2.342.58.142.866-.2.286-.58.342-.866.142-.85-.594-1.868-.937-2.992-.937-2.895 0-5.25 2.33-5.25 5.208 0 .095.005.19.014.28-.019.003-.038.004-.057.004l-.032-.167zm1.684 1.747c-.27-.22-.327-.62-.108-.89.22-.27.62-.327.89-.108 1.09.886 2.48 1.416 4.001 1.416 1.2 0 2.313-.34 3.254-.927.298-.184.69-.092.874.206.184.298.092.69-.206.874-1.126.695-2.446 1.097-3.922 1.097-1.794 0-3.434-.634-4.783-1.668zm3.57-5.254c-.038-.328.197-.622.525-.66.328-.038.622.197.66.525.198 1.69 1.635 2.997 3.378 2.997.33 0 .65-.047.952-.135.33-.096.675.095.77.425.096.33-.095.675-.425.77-.387.113-.795.19-1.217.19-2.506 0-4.566-1.88-4.843-4.284l.2.172zm7.916 4.284c0-.345.28-.625.625-.625s.625.28.625.625-.28.625-.625.625-.625-.28-.625-.625zm1.25-2.5c0-.345.28-.625.625-.625s.625.28.625.625v1.25c0 .345-.28.625-.625.625s-.625-.28-.625-.625v-1.25zm0-2.5c0-.345.28-.625.625-.625s.625.28.625.625v1.25c0 .345-.28.625-.625.625s-.625-.28-.625-.625V8zm1.25-1.25c0-.345.28-.625.625-.625s.625.28.625.625v6.25c0 .345-.28.625-.625.625s-.625-.28-.625-.625V6.75zm1.25 1.25c0-.345.28-.625.625-.625s.625.28.625.625v5c0 .345-.28.625-.625.625s-.625-.28-.625-.625V8zm1.25-.625c0-.345.28-.625.625-.625s.625.28.625.625v5.625c0 .345-.28.625-.625.625s-.625-.28-.625-.625V7.375z"/></svg>
     </a>
+    <a href="https://instagram.com/klepstoter" target="_blank" rel="noopener" style="color:var(--muted);transition:color 0.25s;display:flex;" onmouseover="this.style.color='var(--amber-light)'" onmouseout="this.style.color='var(--muted)'" title="Instagram">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
   </div>
-  <span class="footer-note">Guitarist & Producer · Italy · Available Worldwide via Fiverr</span>
+  <span class="footer-note" data-en="Guitarist &amp; Producer · Italy · Available Worldwide via Fiverr" data-it="Chitarrista &amp; Produttore · Italia · Disponibile Worldwide via Fiverr">Guitarist &amp; Producer · Italy · Available Worldwide via Fiverr</span>
 </footer>
 
 <script>
+  // ---- Scroll nav ----
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
+
+  // ---- Language toggle ----
+  let currentLang = 'en';
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-it').classList.toggle('active', lang === 'it');
+
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const text = el.getAttribute('data-' + lang);
+      if (text !== null) {
+        // Use innerHTML for elements that may contain tags like <em> or <br>
+        if (text.includes('<')) {
+          el.innerHTML = text;
+        } else {
+          el.textContent = text;
+        }
+      }
+    });
+  }
 </script>
 </body>
 </html>
